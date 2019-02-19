@@ -1,0 +1,51 @@
+.error-field{
+    border: 1px solid red;
+}
+.no-error{
+    border: 1px solid green;
+}
+.error-msg{
+    color: red;
+}
+div.form-container{
+    background-color: #e0d3d3;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 15px;
+}
+.col-30, .col-70{
+    margin-top: 5px;
+    float: left; 
+}
+.col-30 {
+    width: 30%;
+}
+.col-70 {
+    width: 70%;
+}
+.form-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+label{
+    display: inline-block;
+}
+input[type=text]{
+    width: 100%;
+    padding: 5px;
+}
+button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    margin: 15px;
+}
+@media screen and (max-width: 768px) {
+    .col-30, .col-70, button{
+      width: 100%;
+      margin-top: 0;
+    }
+}

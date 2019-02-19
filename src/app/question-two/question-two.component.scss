@@ -1,0 +1,61 @@
+div.part1{
+    span{
+        color: blue;
+    }
+    p:first-child{
+        color: red;
+    }
+    p:last-child{
+        color: yellow;
+    }
+    div > p{
+        color: green;
+    }
+}
+.part2{
+    ol li{
+        color: red;
+        &:nth-child(3n+3){
+            color: green;
+        }
+    }
+}
+div.part3{
+    div{
+        color: blue;
+    }
+    span.iAffectMyNextdiv{
+        color: red;
+        + div{
+            color: red;
+        }
+    }
+    
+}
+div.part4{
+    a{
+        color: red;
+    }
+    div:nth-child(2){
+        a{
+            color: yellow;
+        }
+    }
+    ul{
+        li:first-child{
+            a{
+                color: yellow;
+            }
+        }
+        li:nth-child(2){
+            a{
+                color: green;
+            }
+        }
+    }
+    p {
+        a{
+            color: yellow;
+        }
+    }
+}

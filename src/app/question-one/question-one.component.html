@@ -1,0 +1,105 @@
+<!-- work on angular form -->
+<h2>Simple form assigment</h2>
+<ol>
+  <li> Style the form and make it more beautifull form.</li>
+  <li> Make it responsive.</li>
+  <li> Form field should turn red in case of empty entry for required field(Make a red border with required message in red color below form field).</li>
+  <li> If the field is not required simply turn it green after user either fill the field or visit the field.</li>
+  <li> After user fill the form field must turn green (a green border;)</li>
+  <li> Do not use external css library </li>
+  <li> You can edit html file (for only this question)</li>
+</ol>
+<div class="form-container">
+    <form [formGroup]='userForm' (ngSubmit)='callAfterSubmit(testForm)'>
+        <h1>simple user details form</h1>
+        <br/>
+        <div class="form-row">
+            <div class="col-30">
+                <label>First name(required)</label>
+            </div>
+            <div class="col-70">
+                <input type="text"  placeholder="First name" name='firstname' formControlName='firstName'
+        [ngClass]="{'error-field': (userForm.controls['firstName'].touched || userForm.controls['firstName'].dirty) && userForm.controls['firstName'].invalid,
+        'no-error':  (userForm.controls['firstName'].touched || userForm.controls['firstName'].dirty) && userForm.controls['firstName'].valid}"/>
+        <ng-container *ngIf="(userForm.controls['firstName'].touched || userForm.controls['firstName'].dirty) && userForm.controls['firstName'].invalid">
+            <p class="error-msg" *ngIf="userForm.controls['firstName'].errors.required">Field is required</p>
+        </ng-container>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-30">
+                <label>Middle name(required)</label>
+            </div>
+            <div class="col-70">
+                <input type="text"  placeholder='Middle name' name='middlename' formControlName='lastName'  
+        [ngClass]="{'error-field':(userForm.controls['lastName'].touched || userForm.controls['lastName'].dirty) && userForm.controls['lastName'].invalid,
+        'no-error':  (userForm.controls['lastName'].touched || userForm.controls['lastName'].dirty) && userForm.controls['lastName'].valid}"/>
+        <ng-container *ngIf="(userForm.controls['lastName'].touched || userForm.controls['lastName'].dirty) && userForm.controls['lastName'].invalid">
+            <p class="error-msg" *ngIf="userForm.controls['lastName'].errors.required">Field is required</p>
+        </ng-container>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-30">
+                <label>Email (required)</label>
+            </div>
+            <div class="col-70">
+                <input type="text"  placeholder='Email' name='email' formControlName='emailField'  
+        [ngClass]="{'error-field':(userForm.controls['emailField'].touched || userForm.controls['emailField'].dirty) && userForm.controls['emailField'].invalid,
+        'no-error':  (userForm.controls['emailField'].touched || userForm.controls['emailField'].dirty) && userForm.controls['emailField'].valid}"/>
+        <ng-container *ngIf="(userForm.controls['emailField'].touched || userForm.controls['emailField'].dirty) && userForm.controls['emailField'].invalid">
+            <p class="error-msg" *ngIf="userForm.controls['emailField'].errors.required">Field is required</p>
+            <p class="error-msg" *ngIf="userForm.controls['emailField'].errors.email">Invalid email address</p>
+        </ng-container>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-30">
+                <label>Age(required)</label>
+            </div>
+            <div class="col-70">
+                <input type="text"  placeholder='age' name='age' formControlName='ageField' 
+        [ngClass]="{'error-field':(userForm.controls['ageField'].touched || userForm.controls['ageField'].dirty) && userForm.controls['ageField'].invalid,
+        'no-error':  (userForm.controls['ageField'].touched || userForm.controls['ageField'].dirty) && userForm.controls['ageField'].valid}"/>
+        <ng-container *ngIf="(userForm.controls['ageField'].touched || userForm.controls['ageField'].dirty) && userForm.controls['ageField'].invalid">
+            <p class="error-msg" *ngIf="userForm.controls['ageField'].errors.required">Field is required</p>
+            <p class="error-msg" *ngIf="userForm.controls['ageField'].errors.min">Minimum age is 18</p>
+            <p class="error-msg" *ngIf="userForm.controls['ageField'].errors.max">Maximum age is 30</p>
+        </ng-container>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-30">
+                <label>Address(required)</label>
+            </div>
+            <div class="col-70">
+                <input type="text"  placeholder="Adress1" name='address1' formControlName='address1'
+        [ngClass]="{'error-field':(userForm.controls['address1'].touched || userForm.controls['address1'].dirty) && userForm.controls['address1'].invalid,
+        'no-error':(userForm.controls['address1'].touched || userForm.controls['address1'].dirty) && userForm.controls['address1'].valid}"/>
+        <ng-container *ngIf="(userForm.controls['address1'].touched || userForm.controls['address1'].dirty) && userForm.controls['address1'].invalid">
+            <p class="error-msg" *ngIf="userForm.controls['address1'].errors.required">Field is required</p>
+            <p class="error-msg" *ngIf="userForm.controls['address1'].errors.maxlength">Max length is 10</p>
+        </ng-container>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-30">
+                <label>Address2</label>
+            </div>
+            <div class="col-70">
+                <input type="text"  placeholder="Adress2" name='address2' [ngClass]="{'no-error': greenAddress2}" (blur)="setGreen('address2')"/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-30">
+                <label>Address3</label>
+            </div>
+            <div class="col-70">
+                <input type="text"  placeholder="Adress3" name='address3' [ngClass]="{'no-error': greenAddress3}" (blur)="setGreen('address3')"  />
+            </div>
+        </div>
+        <div class="row">
+                    <button type="submit">submit</button>        
+        </div>        
+    </form>
+</div>

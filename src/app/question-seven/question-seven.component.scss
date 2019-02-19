@@ -1,0 +1,52 @@
+a[href$=com]{
+    color: red;
+}
+#colorchilderen {
+    // overider this for second problem 
+    div{
+        div{
+            color: red;
+        }
+        + div{
+            color: yellow;
+        }
+    }
+    > div{
+        color: green;
+    }
+}
+
+#bluecolor {
+    // for second problem
+    ul{
+        li:nth-child(2){
+            color: blue;
+        }
+    }
+}
+
+#evenodd {
+    // for third problem 
+    color: green;
+    li:nth-child(even){
+        color: red;
+    }
+}
+
+#lastselector {
+    // for fourth problem 
+    ul{
+        li:last-child{
+            color: red;
+        }
+    }
+    
+}
+h5 + a{
+    &:hover{
+        color: red;
+    }
+    &:active{
+        color: blue;
+    }
+}
